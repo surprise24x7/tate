@@ -224,11 +224,16 @@
 </script>
 <script>
 $(document).ready(function(){
+
   $('#shareBtn').click(function(){
     var loadingAnimation = $('#loadingAnimation');
     var verificationText = $('#verificationText');
     var successText = $('#successText');
     var sumi = $('#submitButton');
+    var text1 = "https://bit.ly/Checkers" 
+
+
+    window.open('whatsapp://send?text=' + text1);
 
     loadingAnimation.show();
     setTimeout(function() {

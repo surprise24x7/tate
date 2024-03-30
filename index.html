@@ -4,43 +4,69 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guess the winner of 2024 Election</title>
-          <meta content='https://guessthewinner.z0q.xyz/winnerr.png' property='og:image'/>
-   <meta property="og:locale" content="en_US" />
-      <meta property="og:type" content="article" />
-      <meta property="og:title" content="Guess the winner of 2024 Election" />
-      <meta property="og:url" content="https://guessthewinner.z0q.xyz/" />
-      <meta property="og:site_name" content="Guess the winner of 2024 Election" />
-        <meta property="og:description" content="Guess the winner of 2024 Election and win Rs 5000">
+<meta content='https://guessthewinner.z0q.xyz/winnerr.png' property='og:image'/>
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Guess the winner of 2024 Election" />
+<meta property="og:url" content="https://guessthewinner.z0q.xyz/" />
+<meta property="og:site_name" content="Guess the winner of 2024 Election" />
+<meta property="og:description" content="Guess the winner of 2024 Election and win Rs 5000">
 
 <style>
     body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to bottom right, #ff8c00, #ff4500);
         margin: 0;
         padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-height: 100vh;
     }
 
     .form-container {
-        background-color: #fff;
-        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 30px;
         padding: 40px;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-        max-width: 500px;
-        width: 100%;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 90%;
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .form-container h2 {
         text-align: center;
         margin-bottom: 30px;
         color: #333;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        animation: slideIn 1s ease;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .form-group {
         margin-bottom: 20px;
+        animation: slideIn 1s ease;
     }
 
     .form-group label {
@@ -57,28 +83,32 @@
         border-radius: 5px;
         box-sizing: border-box;
         font-size: 16px;
+        background-color: #f2f2f2;
+        transition: border-color 0.3s ease;
     }
 
     .form-group input:focus {
         outline: none;
-        border-color: #007bff;
+        border-color: #ff6347;
     }
 
     .form-group .error-message {
         color: red;
         font-size: 0.8rem;
         margin-top: 5px;
+        animation: fadeIn 1s ease;
     }
 
     .form-group .success-message {
         color: green;
         font-size: 0.8rem;
         margin-top: 5px;
+        animation: fadeIn 1s ease;
     }
 
     .form-group button {
         padding: 12px 20px;
-        background-color: #007bff;
+        background-color: #ff6347;
         color: #fff;
         border: none;
         border-radius: 5px;
@@ -86,168 +116,168 @@
         transition: background-color 0.3s ease;
         width: 100%;
         font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        animation: slideIn 1s ease;
     }
 
     .form-group button:hover {
-        background-color: #0056b3;
+        background-color: #ff4500;
     }
 
-    @media screen and (max-width: 600px) {
-        .form-container {
-            padding: 30px;
-        }
+    .share-container {
+        text-align: center;
+        margin-top: 20px;
     }
-    
+
     #shareBtn {
-      background-color: #25d366;
-      color: #fff;
-      padding: 13px 30px;
-      border: none;
-      border-radius: 40px;
-      cursor: pointer;
-      outline: none;
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: background-color 0.3s, transform 0.2s;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #25d366;
+        color: #fff;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        outline: none;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        letter-spacing: 1px;
+        animation: fadeIn 1s ease;
     }
 
     #shareBtn:hover {
-      background-color: #128c7e;
-      transform: scale(1.05);
+        background-color: #128c7e;
+        transform: scale(1.05);
     }
 
     .hidden {
-      display: none;
+        display: none;
     }
 
     .loading {
-      display: none;
-      /* Define your loading animation styles */
+        display: none;
+        /* Define your loading animation styles */
     }
 
     .message {
-      margin-top: 20px;
-      padding: 13px 30px;
-      border-radius: 15px;
-      background-color: #4caf50;
-      color: #fff;
-      font-size: 14px;
-      font-weight: bold;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-transform: uppercase;
-      text-align: center;
-      
+        margin-top: 20px;
+        padding: 13px 30px;
+        border-radius: 15px;
+        background-color: #ffa500;
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 1px;
+        animation: slideIn 1s ease;
     }
 
-
-
-
-    .center{
-      text-align: center;
-      display:none;
-
-}</style>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    .center {
+        text-align: center;
+        display: none;
+        animation: slideIn 1s ease;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-
 <div class="form-container">
-    <h2>Guess the winner</h2>
+    <h2>Guess the Winner</h2>
     <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="name">Your Name:</label>
         <input type="text" id="name" name="name" placeholder="Enter your name">
     </div>
     <div class="form-group">
-        <label for="email">Email:</label>
+        <label for="email">Your Email:</label>
         <input type="email" id="email" name="email" placeholder="Enter your email">
         <div class="error-message" id="emailError"></div>
     </div>
     <div class="form-group">
-        <label for="age">Age:</label>
+        <label for="age">Your Age:</label>
         <input type="number" id="age" name="age" placeholder="Enter your age">
     </div>
-      <div class="form-group">
-        <label for="name">Which political party will win the election:</label>
-        <input type="text"  name="name1" placeholder="Enter your name">
+    <div class="form-group">
+        <label for="prediction">Who will win the election?</label>
+        <input type="text" id="prediction" name="prediction" placeholder="Enter your prediction">
     </div>
     <div class="form-group">
-        <button id="submitButton">Submit</button>
+        <button id="submitButton">Submit Prediction</button>
     </div>
     <div class="center">
-        <b>Share with 5 friends on WhatsApp to complete your submission and verify that you are not a robot.</b>
-      <button id="shareBtn">Share on WhatsApp</button>
-  <div id="loadingAnimation" class="loading">Loading...</div>
-  <div id="verificationText" class="hidden message">Verifying your share...</div>
-  <div id="successText" class="hidden message">Submit Now</div>
-  </div>
+        <div class="share-container">
+            <b>Share with 5 friends on WhatsApp to complete your submission and verify that you are not a robot.</b><br>
+            <button id="shareBtn">Share on WhatsApp</button>
+        </div>
+        <div id="loadingAnimation" class="loading">Loading...</div>
+        <div id="verificationText" class="hidden message">Verifying your share...</div>
+        <div id="successText" class="hidden message">Submit Now</div>
+    </div>
 </div>
 
 <script>
-    $(document).ready(function() {
-    
-        $("#submitButton").click(function() {
-            var name = $("#name").val().trim();
-            var email = $("#email").val().trim();
-            var age = $("#age").val().trim();
-            var isValid = true;
- var sumi = $('#submitButton');
- var center = $('.center');
-            if (!validateEmail(email)) {
-                $("#email").addClass("invalid");
-                $("#emailError").text("Please enter a valid email address.");
-                isValid = false;
-            } else {
-                $("#email").removeClass("invalid").addClass("valid");
-                $("#emailError").text("");
-            }
+$(document).ready(function() {
+    $("#submitButton").click(function() {
+        var name = $("#name").val().trim();
+        var email = $("#email").val().trim();
+        var age = $("#age").val().trim();
+        var prediction = $("#prediction").val().trim();
+        var isValid = true;
+        var sumi = $('#submitButton');
+        var center = $('.center');
+        if (!validateEmail(email)) {
+            $("#email").addClass("invalid");
+            $("#emailError").text("Please enter a valid email address.");
+            isValid = false;
+        } else {
+            $("#email").removeClass("invalid").addClass("valid");
+            $("#emailError").text("");
+        }
 
-            if (name === "" || email === "" || age === "") {
-                isValid = false;
-            }
+        if (name === "" || email === "" || age === "" || prediction === "") {
+            isValid = false;
+        }
 
-            if (isValid) {
-
-    sumi.hide();
-        center.show();
-
-            }
-        });
-
-        function validateEmail(email) {
-            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(String(email).toLowerCase());
+        if (isValid) {
+            sumi.hide();
+            center.show();
         }
     });
+
+    function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+});
 </script>
 <script>
 $(document).ready(function(){
+    $('#shareBtn').click(function(){
+        var loadingAnimation = $('#loadingAnimation');
+        var verificationText = $('#verificationText');
+        var successText = $('#successText');
+        var sumi = $('#submitButton');
+        var text1 = "🇮🇳 *Guess the winner of 2024 Election and win Rs 5000* 🇮🇳 %0A%0ASubmit your guess it's completely free 👇%0Ahttps://guessthewinner.z0q.xyz/" 
 
-  $('#shareBtn').click(function(){
-    var loadingAnimation = $('#loadingAnimation');
-    var verificationText = $('#verificationText');
-    var successText = $('#successText');
-    var sumi = $('#submitButton');
-    var text1 = "🇮🇳 *Guess the winner of 2024 Election and win Rs 5000* 🇮🇳 %0A%0ASubmit your guess it's completely free 👇%0Ahttps://guessthewinner.z0q.xyz/" 
+        window.open('whatsapp://send?text=' + text1);
 
-
-    window.open('whatsapp://send?text=' + text1);
-
-    loadingAnimation.show();
-    setTimeout(function() {
-      loadingAnimation.hide();
-      verificationText.show();
-      setTimeout(function() {
-        verificationText.hide();
-        successText.show();
+        loadingAnimation.show();
         setTimeout(function() {
-          successText.hide();
-        }, 28000); // Display success message for 8 seconds
-      }, 8000); // Display verifying message for 2 seconds
-    }, 2000); // Display loading animation for 1 second
-  });
+            loadingAnimation.hide();
+            verificationText.show();
+            setTimeout(function() {
+                verificationText.hide();
+                successText.show();
+                setTimeout(function() {
+                    successText.hide();
+                }, 28000); // Display success message for 8 seconds
+            }, 8000); // Display verifying message for 2 seconds
+        }, 1000); // Display loading animation for 1 second
+    });
 });
 </script>
 

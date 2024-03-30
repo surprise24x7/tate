@@ -15,7 +15,7 @@
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(to bottom right, #ff7f50, #ff6347);
+        background: linear-gradient(to bottom right, #ff8c00, #ff4500);
         margin: 0;
         padding: 0;
         display: flex;
@@ -26,11 +26,11 @@
 
     .form-container {
         background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 10px;
+        border-radius: 30px;
         padding: 40px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-        max-width: 500px;
-        width: 100%;
+        max-width: 600px;
+        width: 90%;
     }
 
     .form-container h2 {
@@ -88,31 +88,34 @@
         transition: background-color 0.3s ease;
         width: 100%;
         font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .form-group button:hover {
         background-color: #ff4500;
     }
 
-    @media screen and (max-width: 600px) {
-        .form-container {
-            padding: 30px;
-        }
+    .share-container {
+        text-align: center;
+        margin-top: 20px;
     }
 
     #shareBtn {
         background-color: #ffa500;
         color: #fff;
-        padding: 13px 30px;
+        padding: 15px 30px;
         border: none;
-        border-radius: 40px;
+        border-radius: 50px;
         cursor: pointer;
         outline: none;
-        font-size: 12px;
+        font-size: 18px;
         font-weight: bold;
         text-transform: uppercase;
         transition: background-color 0.3s, transform 0.2s;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        letter-spacing: 1px;
     }
 
     #shareBtn:hover {
@@ -135,11 +138,12 @@
         border-radius: 15px;
         background-color: #ffa500;
         color: #fff;
-        font-size: 14px;
+        font-size: 18px;
         font-weight: bold;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         text-transform: uppercase;
         text-align: center;
+        letter-spacing: 1px;
     }
 
     .center {
@@ -151,30 +155,32 @@
 </head>
 <body>
 <div class="form-container">
-    <h2>Guess the winner</h2>
+    <h2>Guess the Winner</h2>
     <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="name">Your Name:</label>
         <input type="text" id="name" name="name" placeholder="Enter your name">
     </div>
     <div class="form-group">
-        <label for="email">Email:</label>
+        <label for="email">Your Email:</label>
         <input type="email" id="email" name="email" placeholder="Enter your email">
         <div class="error-message" id="emailError"></div>
     </div>
     <div class="form-group">
-        <label for="age">Age:</label>
+        <label for="age">Your Age:</label>
         <input type="number" id="age" name="age" placeholder="Enter your age">
     </div>
     <div class="form-group">
-        <label for="name">Which political party will win the election:</label>
-        <input type="text"  name="name1" placeholder="Enter your name">
+        <label for="prediction">Who will win the election?</label>
+        <input type="text" id="prediction" name="prediction" placeholder="Enter your prediction">
     </div>
     <div class="form-group">
-        <button id="submitButton">Submit</button>
+        <button id="submitButton">Submit Prediction</button>
     </div>
     <div class="center">
-        <b>Share with 5 friends on WhatsApp to complete your submission and verify that you are not a robot.</b>
-        <button id="shareBtn">Share on WhatsApp</button>
+        <div class="share-container">
+            <b>Share with 5 friends on WhatsApp to complete your submission and verify that you are not a robot.</b><br>
+            <button id="shareBtn">Share on WhatsApp</button>
+        </div>
         <div id="loadingAnimation" class="loading">Loading...</div>
         <div id="verificationText" class="hidden message">Verifying your share...</div>
         <div id="successText" class="hidden message">Submit Now</div>
@@ -187,6 +193,7 @@ $(document).ready(function() {
         var name = $("#name").val().trim();
         var email = $("#email").val().trim();
         var age = $("#age").val().trim();
+        var prediction = $("#prediction").val().trim();
         var isValid = true;
         var sumi = $('#submitButton');
         var center = $('.center');
@@ -199,7 +206,7 @@ $(document).ready(function() {
             $("#emailError").text("");
         }
 
-        if (name === "" || email === "" || age === "") {
+        if (name === "" || email === "" || age === "" || prediction === "") {
             isValid = false;
         }
 
